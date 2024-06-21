@@ -15,7 +15,7 @@ Slash flutter internship task
 - Open an emulator on your IDE
 - Type `flutter run` or press the *run* button in your IDE
 - If `flutter run` didn't work then:
-  - type `pub get` in your terminal then try again
+  - type `flutter pub get` in your terminal then try again
 
 ### Note:
 
