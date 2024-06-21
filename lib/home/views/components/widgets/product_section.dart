@@ -15,61 +15,62 @@ class ProductSection extends StatelessWidget {
     if(givenHeight != null){
       itemsHeight = givenHeight!;
     }
-    return SizedBox(
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(screenPadding,0,screenPadding,screenPadding),
-            child: Row(
-              children: [
-                Text(title,
-                  style: const TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w600,
-                    color: darkColor
-                  ),
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(screenPadding,0,screenPadding,screenPadding),
+          child: Row(
+            children: [
+              // ProductSection title
+              Text(title,
+                style: const TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w600,
+                  color: darkColor
                 ),
-                const Expanded(child: SizedBox()),
-                Row(
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.only(right: 10.0),
-                      child: Text("See all",
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500
-                        ),
+              ),
+              const Expanded(child: SizedBox()),
+              // "See all" button
+              Row(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(right: 10.0),
+                    child: Text("See all",
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500
                       ),
                     ),
-                    InkWell(
-                      onTap: (){},
-                      child: Container(
-                          width: 20,
-                          height: 20,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(4)),
-                            color: greyColor,
-                          ),
-                          child: const Icon(Icons.arrow_forward_ios,size: 16,)
-                      ),
-                    )
-                  ],
-                )
-              ],
-            ),
+                  ),
+                  InkWell(
+                    onTap: (){},
+                    child: Container(
+                        width: 20,
+                        height: 20,
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(4)),
+                          color: greyColor,
+                        ),
+                        child: const Icon(Icons.arrow_forward_ios,size: 16,)
+                    ),
+                  )
+                ],
+              )
+            ],
           ),
-          SizedBox(
-            height: itemsHeight,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: [
-                const SizedBox(width: screenPadding),
-                ...items,
-              ],
-            ),
-          )
-        ],
-      ),
+        ),
+        // Products
+        SizedBox(
+          height: itemsHeight,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: [
+              const SizedBox(width: screenPadding),
+              ...items,
+            ],
+          ),
+        )
+      ],
     );
   }
 }

@@ -25,6 +25,7 @@ class _ResponsiveHomeScreenState extends State<ResponsiveHomeScreen>
   @override
   Widget build(BuildContext context) {
     final tabController = TabController(length: 4, vsync: this);
+
     return MultiBlocProvider(
       providers: [
         BlocProvider<HomeBloc>(
@@ -39,7 +40,10 @@ class _ResponsiveHomeScreenState extends State<ResponsiveHomeScreen>
         builder: (context, state) {
           return Scaffold(
             backgroundColor: lightColor,
+
             appBar: HomeAppBar(),
+            // one screen is shown with different ui
+            // and data according to current state
             body: state is HomeInitial?
               const Center(child: CircularProgressIndicator()) :
               state is HomeLoaded?
@@ -53,6 +57,7 @@ class _ResponsiveHomeScreenState extends State<ResponsiveHomeScreen>
               state is HomeError?
               Center(child: Text(state.error.errorMsg ?? "Something went wrong")) :
               const Center(child: Text("ERROR: UNKNOWN"),),
+
             bottomNavigationBar: MyBottomNavigationBar(
               tabController: tabController,
               onTap: (index) {

@@ -29,7 +29,7 @@ class MyBottomNavigationBar extends StatelessWidget {
             fontWeight: boldWeight,
           )
         ),
-        unselectedLabelStyle:  GoogleFonts.urbanist(
+        unselectedLabelStyle: GoogleFonts.urbanist(
           textStyle: const TextStyle(
             fontWeight: regularWeight,
           )
@@ -51,7 +51,7 @@ class MyBottomNavigationBar extends StatelessWidget {
             CupertinoIcons.cart_fill : CupertinoIcons.shopping_cart),
             text: "Cart",
           ),
-          const Tab(
+          const Tab( // couldn't find a filled icon lol
             icon: Icon(CupertinoIcons.profile_circled),
             text: "Profile",
           ),

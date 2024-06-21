@@ -5,6 +5,7 @@ import 'package:slash_task/core/constants.dart';
 import 'package:slash_task/core/models/product_model.dart';
 import 'package:slash_task/home/blocs/home_bloc.dart';
 
+///Represents a product that has an [image], [price] and [name]
 class ProductCard extends StatelessWidget {
   ProductCard({super.key, this.id, this.image, this.price, this.name,
     required this.isFavorite, required this.isAdded});
@@ -18,8 +19,8 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const descSize = 46;
-    final imageHeight = 162.0 - descSize;
-    final width = 124.0;
+    const imageHeight = 162.0 - descSize;
+    const width = 124.0;
     return Padding(
       padding: const EdgeInsets.only(right: 10),
       child: Stack(
@@ -29,6 +30,7 @@ class ProductCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Product image
                 Container(
                   height: imageHeight,
                   decoration: BoxDecoration(
@@ -40,8 +42,10 @@ class ProductCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 5,),
+                // Product name
                 Text(
                   name!,
+                  overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
                     color: darkColor,
                     fontSize: 16,
@@ -50,8 +54,10 @@ class ProductCard extends StatelessWidget {
                 ),
                 Row(
                   children: [
+                    // Product price
                     Text(
                       "EGP $price",
+                      overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: boldWeight,
@@ -61,6 +67,7 @@ class ProductCard extends StatelessWidget {
                     const Expanded(child: SizedBox()),
                     Row(
                       children: [
+                        // Product owner
                         InkWell(
                           child: Container(
                             width: 21,
@@ -75,6 +82,7 @@ class ProductCard extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: 10,),
+                        // Add to cart
                         InkWell(
                           onTap: (){
                             if(isAdded){
@@ -129,6 +137,7 @@ class ProductCard extends StatelessWidget {
               ],
             ),
           ),
+          // Add to favorites
           Positioned(
             top: 6,
             right: 6,

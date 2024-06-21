@@ -1,9 +1,11 @@
 part of 'home_bloc.dart';
 
+
 sealed class HomeState extends Equatable {
   const HomeState();
 }
 
+///Home state when loading data or when opening app
 final class HomeInitial extends HomeState {
   final String location;
 
@@ -13,7 +15,7 @@ final class HomeInitial extends HomeState {
   List<Object> get props => [location];
 }
 
-
+///Home state when [homeDataModel] is loaded
 final class HomeLoaded extends HomeState {
   final HomeDataModel homeDataModel;
   final String location;
@@ -34,7 +36,7 @@ final class HomeLoaded extends HomeState {
   }
 }
 
-
+///Home state when [favorites] are loaded
 final class FavoriteLoaded extends HomeState {
   final List<Product> favorites;
   final String location;
@@ -55,7 +57,7 @@ final class FavoriteLoaded extends HomeState {
   }
 }
 
-
+///Home state when [cart] items are loaded
 final class CartLoaded extends HomeState {
   final List<Product> cart;
   final String location;
@@ -76,7 +78,7 @@ final class CartLoaded extends HomeState {
   }
 }
 
-
+///Home state when profile are loaded
 final class ProfileLoaded extends HomeState {
   final String location;
 
@@ -94,7 +96,7 @@ final class ProfileLoaded extends HomeState {
   }
 }
 
-
+///Home state when there is an [error] when loading any type of data
 final class HomeError extends HomeState {
   final Fail error;
   final String location;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:slash_task/core/constants.dart';
 
+/// [Category] widget that consists of a [icon] button and text which shows it's [type]
 class Category extends StatelessWidget {
   const Category({super.key, required this.image, required this.type});
   final String image;

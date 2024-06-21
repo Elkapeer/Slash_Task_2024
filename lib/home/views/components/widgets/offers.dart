@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:slash_task/core/constants.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+/// [Offers] widget that changes its [width] and [height] when scrolling
+/// and have different size and buttons according to the value [isPhone]
 class Offers extends StatelessWidget {
   const Offers({super.key, required this.width, required this.height, required this.isPhone});
 
@@ -22,6 +24,7 @@ class Offers extends StatelessWidget {
       children: [
         Column(
           children: [
+            // Offer image
             Padding(
               padding: const EdgeInsets.only(top: 16),
               child: SizedBox(
@@ -66,6 +69,7 @@ class Offers extends StatelessWidget {
                 ),
               ),
             ),
+            // Dots for page indicator
             Padding(
               padding: const EdgeInsets.fromLTRB(0,14,0,screenPadding),
               child: SmoothPageIndicator(
@@ -90,6 +94,7 @@ class Offers extends StatelessWidget {
             )
           ],
         ),
+        // Move Offers forward & backward if not on a phone
         Visibility(
           visible: !isPhone,
           child: Positioned(

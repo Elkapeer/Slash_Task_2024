@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
+    return LayoutBuilder(  // To change UI according to different screen sizes
       builder: (context, constraints) {
         return SingleChildScrollView(
           controller: controller,
@@ -28,13 +28,15 @@ class HomeScreen extends StatelessWidget {
                 height: MediaQuery.of(context).size.height / 5.5,
                 isPhone: true,
               ) :
-              Offers(  //tablet or desktop
+              //tablet or desktop
+              Offers(
                 width: MediaQuery.of(context).size.width / 3,
                 height: MediaQuery.of(context).size.height / 4,
                 isPhone: false,
               ),
               Column(
                 children: [
+                  // Categories
                   ProductSection(
                     title: "Categories",
                     items: categories.map((e) => Category(
@@ -43,6 +45,7 @@ class HomeScreen extends StatelessWidget {
                     )).toList(),
                     givenHeight: MediaQuery.of(context).size.height / 6,
                   ),
+                  // Best Selling
                   ProductSection(
                     title: "Best Selling",
                     items: homeDataModel.bestSelling!.map((e) =>
@@ -57,6 +60,7 @@ class HomeScreen extends StatelessWidget {
                     ).toList(),
                   ),
                   const SizedBox(height: 30,),
+                  // New Arrival
                   ProductSection(
                       title: "New Arrival",
                       items: homeDataModel.newArrival!.map((e) =>
@@ -71,6 +75,7 @@ class HomeScreen extends StatelessWidget {
                       ).toList(),
                   ),
                   const SizedBox(height: 30,),
+                  // Recommended For You
                   ProductSection(
                       title: "Recommended for you",
                       items: homeDataModel.recommendedForYou!.map((e) =>

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:slash_task/core/constants.dart';
 import 'package:slash_task/core/globals.dart';
 import 'package:slash_task/home/blocs/home_bloc.dart';
+
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget{
   const HomeAppBar({super.key});
 
@@ -14,6 +15,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget{
       elevation: 1,
       actions: [
         const SizedBox(width: screenPadding,),
+        // App Title
         const Padding(
           padding: EdgeInsets.only(top: 8.0),
           child: Text(
@@ -26,6 +28,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget{
           ),
         ),
         const Expanded(child: SizedBox()),
+        // Location
         Padding(
           padding: const EdgeInsets.only(top: 8.0),
           child: PopupMenuButton<String>(
@@ -65,6 +68,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget{
           ),
         ),
         const Expanded(child: SizedBox()),
+        // Notifications
         Padding(
           padding: const EdgeInsets.only(top: 8.0),
           child: IconButton(
@@ -96,6 +100,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget{
         ),
         const SizedBox(width: screenPadding,),
       ],
+      // Search bar
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(100),
         child: Padding(

@@ -13,6 +13,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final HomeRepository homeRepository;
 
   HomeBloc(this.homeRepository) : super(HomeInitial(location: currLocation)) {
+
     on<LoadProducts>((event, emit) async {
       emit(HomeInitial(location: currLocation));
       var res = await homeRepository.getHomeData();
@@ -22,31 +23,39 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         emit(HomeError(error: res,location: currLocation));
       }
     });
+
     on<LoadFavorites>((event, emit) {
       emit(FavoriteLoaded(favorites: favorites, location: currLocation));
     });
+
     on<LoadCart>((event, emit) {
       emit(CartLoaded(cart: cart, location: currLocation));
     });
+
     on<LoadProfile>((event, emit) {
       emit(ProfileLoaded(location: currLocation));
     });
+
     on<AddToCart>((event, emit) {
       cart.add(event.product);
       emit(state);
     });
+
     on<AddToFavorite>((event, emit) {
       favorites.add(event.product);
       emit(state);
     });
+
     on<RemoveCart>((event, emit) {
       cart.removeWhere((element) => element.name == event.product.name);
       emit(state);
     });
+
     on<RemoveFavorite>((event, emit) {
       favorites.removeWhere((element) => element.name == event.product.name);
       emit(state);
     });
+
     on<UpdateLocation>((event, emit) {
       currLocation = event.location;
       final state = this.state;
@@ -71,5 +80,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         ));
       }
     });
+
   }
 }

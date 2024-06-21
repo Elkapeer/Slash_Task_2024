@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
-import 'package:slash_task/home/models/home_data_model.dart';
 import 'package:slash_task/core/services/api_status.dart';
 
+///This class have all general api-related functions
 class Services{
   Future<Object> fetchData(String dataUrl) async {
     var url = Uri.parse(dataUrl);
