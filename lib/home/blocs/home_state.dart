@@ -5,44 +5,102 @@ sealed class HomeState extends Equatable {
 }
 
 final class HomeInitial extends HomeState {
+  final String location;
+
+  const HomeInitial({required this.location,});
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [location];
 }
 
-final class HomeLoaded extends HomeState{
+
+final class HomeLoaded extends HomeState {
   final HomeDataModel homeDataModel;
-  const HomeLoaded(this.homeDataModel);
+  final String location;
+
+  const HomeLoaded({required this.homeDataModel, required this.location});
 
   @override
-  List<Object> get props => [homeDataModel];
+  List<Object> get props => [homeDataModel, location];
+
+  HomeLoaded copyWith({
+    HomeDataModel? homeDataModel,
+    String? location,
+  }) {
+    return HomeLoaded(
+      homeDataModel: homeDataModel ?? this.homeDataModel,
+      location: location ?? this.location,
+    );
+  }
 }
 
-final class FavoriteLoaded extends HomeState{
-  // it is a static state for now
+
+final class FavoriteLoaded extends HomeState {
   final List<Product> favorites;
-  const FavoriteLoaded({required this.favorites});
+  final String location;
+
+  const FavoriteLoaded({required this.favorites, required this.location});
+
   @override
-  List<Object> get props => [favorites];
+  List<Object> get props => [favorites, location];
+
+  FavoriteLoaded copyWith({
+    List<Product>? favorites,
+    String? location,
+  }) {
+    return FavoriteLoaded(
+      favorites: favorites ?? this.favorites,
+      location: location ?? this.location,
+    );
+  }
 }
 
-final class CartLoaded extends HomeState{
-  // it is a static state for now
+
+final class CartLoaded extends HomeState {
   final List<Product> cart;
-  const CartLoaded({required this.cart});
+  final String location;
+
+  const CartLoaded({required this.cart, required this.location});
+
   @override
-  List<Object> get props => [cart];
+  List<Object> get props => [cart, location];
+
+  CartLoaded copyWith({
+    List<Product>? cart,
+    String? location,
+  }) {
+    return CartLoaded(
+      cart: cart ?? this.cart,
+      location: location ?? this.location,
+    );
+  }
 }
 
-final class ProfileLoaded extends HomeState{
-  // it is a static state for now
+
+final class ProfileLoaded extends HomeState {
+  final String location;
+
+  const ProfileLoaded({required this.location});
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [location];
+
+  ProfileLoaded copyWith({
+    String? location,
+  }) {
+    return ProfileLoaded(
+      location: location ?? this.location,
+    );
+  }
 }
 
-final class HomeError extends HomeState{
+
+final class HomeError extends HomeState {
   final Fail error;
-  const HomeError(this.error);
+  final String location;
+
+  const HomeError({required this.error, required this.location,});
 
   @override
-  List<Object> get props => [error];
+  List<Object> get props => [error, location];
 }

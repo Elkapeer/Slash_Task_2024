@@ -12,24 +12,24 @@ part 'home_state.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final HomeRepository homeRepository;
 
-  HomeBloc(this.homeRepository) : super(HomeInitial()) {
+  HomeBloc(this.homeRepository) : super(HomeInitial(location: currLocation)) {
     on<LoadProducts>((event, emit) async {
-      emit(HomeInitial());
+      emit(HomeInitial(location: currLocation));
       var res = await homeRepository.getHomeData();
       if(res is HomeDataModel) {
-        emit(HomeLoaded(res));
+        emit(HomeLoaded(homeDataModel: res,location: currLocation));
       }else{
-        emit(HomeError(res));
+        emit(HomeError(error: res,location: currLocation));
       }
     });
     on<LoadFavorites>((event, emit) {
-      emit(FavoriteLoaded(favorites: favorites));
+      emit(FavoriteLoaded(favorites: favorites, location: currLocation));
     });
     on<LoadCart>((event, emit) {
-      emit(CartLoaded(cart: cart));
+      emit(CartLoaded(cart: cart, location: currLocation));
     });
     on<LoadProfile>((event, emit) {
-      emit(ProfileLoaded());
+      emit(ProfileLoaded(location: currLocation));
     });
     on<AddToCart>((event, emit) {
       cart.add(event.product);
@@ -49,8 +49,27 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     });
     on<UpdateLocation>((event, emit) {
       currLocation = event.location;
-      print(currLocation);
-      emit(state);
+      final state = this.state;
+      if(state is HomeLoaded){
+        emit(state.copyWith(
+          location: currLocation
+        ));
+      }
+      if(state is FavoriteLoaded){
+        emit(state.copyWith(
+            location: currLocation
+        ));
+      }
+      if(state is CartLoaded){
+        emit(state.copyWith(
+            location: currLocation
+        ));
+      }
+      if(state is ProfileLoaded){
+        emit(state.copyWith(
+            location: currLocation
+        ));
+      }
     });
   }
 }
