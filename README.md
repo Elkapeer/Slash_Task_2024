@@ -1,13 +1,12 @@
-# slash_task
+# Slash_Task
 
 Slash flutter internship task
 
 ## How to install the project:
 
-- Copy the github repo URL
 - In your selected folder you wish the project to be installed in:
-  - open terminal or command prompt
-  - type `git clone project_github_url`
+  - open terminal or command prompt or git bash
+  - type `git clone https://github.com/Elkapeer/Slash_Task_2024.git`
   - the project will be installed
 
 ## How to run the project:
