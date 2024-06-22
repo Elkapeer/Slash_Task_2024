@@ -31,14 +31,17 @@ class ProductCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Product image
-                Container(
-                  height: imageHeight,
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(8)),
-                    image: DecorationImage(
-                      image: AssetImage(image!),
-                      fit: BoxFit.fill
-                    )
+                InkWell(
+                  onTap: (){},
+                  child: Container(
+                    height: imageHeight,
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(8)),
+                      image: DecorationImage(
+                        image: AssetImage(image!),
+                        fit: BoxFit.fill
+                      )
+                    ),
                   ),
                 ),
                 const SizedBox(height: 5,),
